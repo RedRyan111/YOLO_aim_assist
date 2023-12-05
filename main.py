@@ -11,11 +11,9 @@ import keyboard
 
 from ultralytics import YOLO
 
-model = YOLO('')
+#model = YOLO('')
 
-torch.backends.cudnn.benchmark=True
-
-
+torch.backends.cudnn.benchmark = True
 
 # Model
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
