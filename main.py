@@ -13,9 +13,9 @@ from ultralytics import YOLO
 
 #model = YOLO('')
 
-torch.backends.cudnn.benchmark = True
+#torch.backends.cudnn.benchmark = True
 
 # Model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-model = model.cuda()
+#model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+#model = model.cuda()
 from utils.plots import color_list

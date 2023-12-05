@@ -1,44 +1,27 @@
 import ctypes
 
 
-class MouseAndKeyboardManager():
+class GameCommands():
     def __init__(self):
-        self.mouse = MouseController()
-        self.PUL = ctypes.POINTER(ctypes.c_ulong)
-        #self.W = 0x11
-        #self.A = 0x1E
-        #self.S = 0x1F
-        #self.D = 0x20
-        self.L = 0x26
+        self.mouse = Mouse()
 
-        SendInput = ctypes.windll.user32.SendInput
-
-    def PressKey(hexKeyCode):
-        extra = ctypes.c_ulong(0)
-        ii_ = Input_I()
-        ii_.ki = KeyBdInput(0, hexKeyCode, 0x0008, 0, ctypes.pointer(extra))
-        x = Input(ctypes.c_ulong(1), ii_)
-        ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
-
-
-    def ReleaseKey(hexKeyCode):
-        extra = ctypes.c_ulong(0)
-        ii_ = Input_I()
-        ii_.ki = KeyBdInput(0, hexKeyCode, 0x0008 | 0x0002, 0, ctypes.pointer(extra))
-        x = Input(ctypes.c_ulong(1), ii_)
-        ctypes.windll.user32.SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
-
-
-    def unpause_game():
-        mouse.move(-10000, 10000)
-        mouse.move(800, -10)
+    def unpause_game(self):
+        mouse.set_position(-10000, 10000)
+        mouse.set_position(800, -10)
         time.sleep(1)
-        mouse.click(Button.left, 1)
+        mouse.left_click()
         time.sleep(1)
-        mouse.click(Button.left, 1)
+        mouse.click()
 
 
-    def click(x, y):
+    def shoot_at_position(self, x, y):
+        self.mouse.set_position(x, y)
+        self.mouse.left_click()
+
+class Mouse:
+    def set_position(self, x, y):
         ctypes.windll.user32.SetCursorPos(x, y)
+
+    def left_click(self):
         ctypes.windll.user32.mouse_event(2, 0, 0, 0, 0)  # left mouse button down
         ctypes.windll.user32.mouse_event(4, 0, 0, 0, 0)  # left mouse button up
