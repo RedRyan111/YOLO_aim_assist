@@ -36,64 +36,14 @@ for i in range(15):
     temp = torch.randint(low=0, high=255, size=[3])
     colors.append(temp)
 
-colors = ['#1f77b4',
-    '#ff7f0e',
-    '#2ca02c',
-    '#d62728',
-    '#9467bd',
-    '#8c564b',
-    '#e377c2',
-    '#7f7f7f',
-    '#bcbd22',
-    '#17becf',
-    '#ff7f0e',
-    '#2ca02c',
-    '#d62728',
-    '#9467bd',
-    '#8c564b',
-    '#e377c2',
-    '#7f7f7f',
-    '#bcbd22',
-    '#17becf',
-    '#ff7f0e',
-    '#2ca02c',
-    '#d62728',
-    '#9467bd',
-    '#8c564b',
-    '#e377c2',
-    '#7f7f7f',
-    '#bcbd22',
-    '#17becf',
-    '#d62728',
-    '#9467bd',
-    '#8c564b',
-    '#e377c2',
-    '#7f7f7f',
-    '#bcbd22',
-    '#17becf'
-          ]
+colors = ['#1f77b4']
+
+# load video file
+# segment each image
+# ssave as video
 
 print(f'boxes: {dir(results[0].boxes)}')
 
 img = draw_image(PIL.Image.open(test_img), results[0].boxes.xyxy, results[0].boxes.cls, colors)
 plt.imshow(img)
 plt.show()
-
-'''
-# Load a COCO-pretrained RT-DETR-l model
-# model = RTDETR('rtdetr-l.pt').cuda()
-# model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-model = torch.hub.load("ultralytics/yolov5", "yolov5s")
-model = model.cuda()
-
-# Display model information (optional)
-model.info()
-
-test_img = ['BeforeObjectDetection.png']
-a = time()
-results = model(test_img)
-b = time()
-print(f'time taken: {b - a}')
-print(results)
-
-'''
