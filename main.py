@@ -58,7 +58,7 @@ def FrameCapture(path):
 
 
 path = 'C:/Users/raven/Videos/Left 4 Dead 2/Left 4 Dead 2 2021.01.12 - 22.43.44.08.DVR_Trim.mp4'
-FrameCapture(path)
+#FrameCapture(path)
 
 frame_folder = 'test_images'
 
@@ -83,8 +83,8 @@ def make_gif(frame_folder):
 
 def make_real_gif():
     frames = []
-    for i in range(1067):
-        filename = "test_images/frame%d.jpg" % i
+    for i in range(401):
+        filename = "real_images/frame%d.jpg" % i
         isFile = os.path.isfile(filename)
         if not isFile:
             continue
@@ -95,7 +95,7 @@ def make_real_gif():
     #frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/*.jpg")]
     print(len(frames))
     frame_one = frames[0]
-    frame_one.save("my_real.gif", format="GIF", append_images=frames,
+    frame_one.save("my_pred.gif", format="GIF", append_images=frames,
                    save_all=True, duration=100, loop=0)
 
 #make_gif(frame_folder)
